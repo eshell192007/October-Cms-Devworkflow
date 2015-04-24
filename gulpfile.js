@@ -4,20 +4,14 @@ var gulp = require('gulp'),
   sass = require('gulp-ruby-sass'),
   autoprefix = require('gulp-autoprefixer'),
   coffee = require('gulp-coffee'),
-  livereload = require('gulp-livereload'),
   concat = require('gulp-concat'),
-  imagemin = require('gulp-imagemin'),
-  optipng = require('imagemin-optipng'),
-  jpegtran = require('imagemin-jpegtran'),
   browserify = require('gulp-browserify'),
   uglify = require('gulp-uglify'),
   notify = require('gulp-notify');
 
 var config = {
   sassPath: './app/sass',
-  jadePath: './app/jade',
   coffeePath: './app/coffee',
-  stylusPath: './app/stylus',
   srcDir: './app/src',
   bowerDir: './bower_components',
   publicDir: './assets'
@@ -105,25 +99,16 @@ gulp.task('concatjs', function() {
     }));
 });
 
-gulp.task('images', function () {
-    return gulp.src([config.srcDir + '/images/*.png', config.srcDir + '/images/*.jpg'])
-        .pipe(optipng({optimizationLevel: 3})())
-        .pipe(jpegtran({progressive: true})())
-        .pipe(gulp.dest(config.publicDir + '/assets/images'));
-});
 
 // Rerun the task when a file changes
 gulp.task('watch', function() {
-  livereload.listen()
-  gulp.watch(config.sassPath + '/**/*.sass', ['sass']).on('change', livereload.changed);
+  gulp.watch(config.sassPath + '/**/*.sass', ['sass']);
   gulp.watch(config.coffeePath + '/**/*.coffee', ['coffee', 'concatjs']);
-  gulp.watch(config.srcDir + '/images/*.png', ['images']);
-  gulp.watch(config.srcDir + '/images/*.jpg', ['images']);
-  gulp.watch(config.srcDir + '/js/**/*.js', ['concatjs']).on('change', livereload.changed);
-  gulp.watch(config.srcDir + '/css/**/*.css', ['concatcss']).on('change', livereload.changed);
-  gulp.watch(['layouts/**','content/**','pages/**','partials/**','images/**']).on('change', livereload.changed); 
+  gulp.watch(config.srcDir + '/js/**/*.js', ['concatjs']);
+  gulp.watch(config.srcDir + '/css/**/*.css', ['concatcss']);
+  gulp.watch(['layouts/**','content/**','pages/**','partials/**', config.srcDir + '/images/**']); 
 });
 
 
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', ['copy', 'sass', 'coffee', 'watch', 'images']);
+gulp.task('default', ['copy', 'sass', 'coffee', 'watch']);
