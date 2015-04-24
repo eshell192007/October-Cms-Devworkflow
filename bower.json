@@ -1,0 +1,26 @@
+{
+  "name": "October Cms Devworkflow",
+  "version": "0.0.1",
+  "authors": [
+    "Jorge Andrade <j.andrade.dev@gmail.com>"
+  ],
+  "description": "Underconstruccion Template",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.2",
+    "fontawesome": "~4.3.0",
+    "html5shiv": "~3.7.2",
+    "respond": "~1.4.2"
+  }
+}
