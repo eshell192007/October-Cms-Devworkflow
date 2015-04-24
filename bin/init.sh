@@ -14,4 +14,4 @@ mkdir content
 mkdir pages
 mkdir partials
 bower update
-npm install
+sudo npm install
