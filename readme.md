@@ -10,3 +10,8 @@ Feel free to fork this repo.
 3. cd demo-theme
 4. Then execute in terminal `bin/init.sh`
 5. Start web development.
+
+### Project?
+This project is based on DevWorkflow of @scarnago
+
+`https://github.com/scarnago/devworkflow`
